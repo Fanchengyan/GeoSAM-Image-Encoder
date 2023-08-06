@@ -78,7 +78,7 @@ encode_image_from_cmd(cmd.split())
 
 ### Using Terminal
 
-Before running this script in terminal, you need to add the folder contains the image_encoder.py script to the environment variables. You can use the following code to view the contents of this folder.
+Before running this script in terminal, you need to add the folder contains the image_encoder.py script to the environment variables. You can use the following code to view the absolute path of this folder.
 
 ```python
 import geosam
