@@ -5,13 +5,13 @@ with open("README.md", "r", encoding='UTF-8') as fh:
 
 setuptools.setup(
     name="GeoSAM-Image-Encoder",
-    version="1.0.0",
+    version="1.0.1",
     author="Joey, Fancy",
     author_email="fanchy14@lzu.edu.cn",
     description="A package for encoding satellite images into Geo-SAM features.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Fanchengyan/data-downloader",
+    url="https://github.com/Fanchengyan/GeoSAM-Image-Encoder",
     packages=setuptools.find_packages(),
     install_requires=[
         'pandas',
