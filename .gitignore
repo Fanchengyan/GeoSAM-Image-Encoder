@@ -1,0 +1,9 @@
+.idea/*
+*.pyc
+.vscode/*
+.ipynb_checkpoints
+venv
+geosam/__pycache__
+build/*
+dist/*
+GeoSAM_Image_Encoder.egg-info/*
