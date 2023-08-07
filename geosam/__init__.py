@@ -1,4 +1,4 @@
 import os
-from .image_encoder import encode_image, encode_image_from_cmd
+from .image_encoder import ImageEncoder
 
 folder = os.path.dirname(os.path.abspath(__file__))
