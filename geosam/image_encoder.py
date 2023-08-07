@@ -53,7 +53,7 @@ from tqdm import tqdm
 from segment_anything import sam_model_registry
 from segment_anything.modeling import Sam
 import torch
-from .torchgeo_sam import SamTestGridGeoSampler, SamTestRasterDataset
+from geosam.torchgeo_sam import SamTestGridGeoSampler, SamTestRasterDataset
 from torchgeo.samplers import Units
 from torchgeo.datasets import BoundingBox, stack_samples
 from torch.utils.data import DataLoader
