@@ -17,7 +17,8 @@ setuptools.setup(
         'pandas',
         'tqdm',
         'setuptools',
-        'torchgeo'
+        'torchgeo',
+        'segment-anything'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
