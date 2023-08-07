@@ -116,7 +116,7 @@ class ImageEncoder:
         self.batch_size = batch_size
         self.gpu = gpu
         self.gpu_id = gpu_id
-        self.model_type = check_model_type(model_type)
+        self.model_type = check_model_type(model_type, self.checkpoint_path)
         self.device = detect_device(self.gpu, self.gpu_id)
         self.sam_model = self.initialize_sam()
 
@@ -209,7 +209,7 @@ class ImageEncoder:
         img_height_in_extent = round(
             (extent[3] - extent[1])/resolution)
 
-        ## Print input parameters
+        # Print input parameters
         print('Input Parameters:')
         print('----------------------------------------------')
         # check value range
