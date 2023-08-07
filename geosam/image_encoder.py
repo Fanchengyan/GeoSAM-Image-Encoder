@@ -83,6 +83,22 @@ Parameter_Mapping = {
     "CUDA_ID": "gpu_id"
 }
 
+Init_Settings = [
+    'checkpoint_path',
+    'model_type',
+    'batch_size',
+    'gpu_id'
+]
+Encode_Settings = [
+    'image_path',
+    'feature_dir',
+    'bands',
+    'stride',
+    'extent',
+    'value_range',
+    'resolution'
+]
+
 
 class ImageEncoder:
     '''Encode image to SAM features.'''
@@ -294,7 +310,7 @@ class ImageEncoder:
 
         ds_dataloader = DataLoader(
             sam_ds,
-            batch_size=batch_size,
+            batch_size=self.batch_size,
             sampler=ds_sampler,
             collate_fn=stack_samples
         )
@@ -305,11 +321,11 @@ class ImageEncoder:
 
         if not self.gpu or not gpu_available():
             print(' !!!No GPU available, using CPU instead!!!')
-            batch_size = 1
+            self.batch_size = 1
         print(f' Device type: {self.device}')
 
         print(f' Patch size: {ds_sampler.patch_size} \n'
-              f' Batch size: {batch_size}')
+              f' Batch size: {self.batch_size}')
         print(f' Patch sample num: {len(ds_sampler)}')
         print(f' Total batch num: {len(ds_dataloader)}')
         print('----------------------------------------------\n')
@@ -348,7 +364,7 @@ class ImageEncoder:
     def initialize_sam(self) -> Sam:
         print("Initializing SAM model...\n")
         sam_model = sam_model_registry[self.model_type](
-            checkpoint=self.sam_ckpt_path)
+            checkpoint=self.checkpoint_path)
         sam_model.to(device=self.device)
         return sam_model
 
@@ -586,12 +602,7 @@ def encode_image_from_cmd(argv=None):
         raise ValueError('feature_dir is not specified.')
 
     if settings_path is not None:
-        with open(settings_path) as f:
-            _settings = json.load(f)
-            _settings = _settings['inputs']
-        _settings = {Parameter_Mapping[k]: v for k,
-                     v in _settings.items() if k != 'CRS'}
-        settings.update(_settings)
+        settings.update(parse_settings_file(settings_path))
 
     if image_path is not None:
         settings.update({'image_path': image_path})
@@ -617,7 +628,26 @@ def encode_image_from_cmd(argv=None):
         settings.update({'gpu_id': gpu_id})
 
     print(f"\nsettings:\n {settings}\n")
-    encode_image(**settings)
+    init_settings, encode_settings = split_settings(settings)
+    img_encoder = ImageEncoder(**init_settings)
+    img_encoder.encode_image(**encode_settings)
+
+
+def parse_settings_file(settings_path):
+    with open(settings_path) as f:
+        settings = json.load(f)
+        settings = settings['inputs']
+    settings = {Parameter_Mapping[k]: v for k,
+                v in settings.items() if k != 'CRS'}
+    return settings
+
+
+def split_settings(settings):
+    init_settings = {k: v for k, v in settings.items()
+                     if k in Init_Settings}
+    encode_settings = {k: v for k, v in settings.items()
+                       if k in Encode_Settings}
+    return init_settings, encode_settings
 
 
 if __name__ == "__main__":
