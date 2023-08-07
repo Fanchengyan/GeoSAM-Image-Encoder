@@ -4,7 +4,10 @@ This package is part of [Geo-SAM](https://github.com/coolzhao/Geo-SAM) and is us
 
 ## Installation
 
-It is recommended to use the latest version of pip to install **GeoSAM-Image-Encoder**.
+Installing `GeoSAM-Image-Encoder` directly will install the CPU version of `PyTorch`. Therefore, it is recommended to install the appropriate version of `PyTorch` before installing `GeoSAM-Image-Encoder`. You can install the corresponding version based on the official PyTorch website: 
+<https://pytorch.org/get-started/locally/>
+
+After installing PyTorch, you can install `GeoSAM-Image-Encoder` via pip.
 
 ``` BASH
 pip install GeoSAM-Image-Encoder
