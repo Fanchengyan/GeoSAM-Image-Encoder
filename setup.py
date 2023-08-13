@@ -5,7 +5,7 @@ with open("README.md", "r", encoding='UTF-8') as fh:
 
 setuptools.setup(
     name="GeoSAM-Image-Encoder",
-    version="1.0.2",
+    version="1.0.3",
     author="Joey, Fancy",
     author_email="fanchy14@lzu.edu.cn",
     description="A package for encoding satellite images into Geo-SAM features.",
