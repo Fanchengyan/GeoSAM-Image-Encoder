@@ -41,7 +41,7 @@ check if gpu available
 geosam.gpu_available()
 ```
 
-#### Run by specify parameters dirctly
+#### Run by specify parameters directly
 
 ```python
 checkpoint_path = '/content/sam_vit_l_0b3195.pth'
