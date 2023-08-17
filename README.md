@@ -18,7 +18,7 @@ pip install git+https://github.com/Fanchengyan/GeoSAM-Image-Encoder.git
 
 ## Usage
 
-You can call this script in Python or Terminal.
+You can call this script in Python or Terminal. We recommend using Python interface directly for processing, which will have greater flexibility.
 
 ### Using Python
 
@@ -50,11 +50,8 @@ feature_dir = './'
 
 ## init ImageEncoder
 img_encoder = ImageEncoder(checkpoint_path)
-```
-
-```python
 ## encode image
-img_encoder.encode_image(image_path, feature_dir)
+img_encoder.encode_image(image_path,feature_dir)
 ```
 
 #### Run by parameters from setting.json file
@@ -79,7 +76,7 @@ print(f"init_settings: {init_settings}")
 print(f"encode_settings: {encode_settings}")
 ```
 
-Then, you can run image incoding by parrameters from setting.json file
+Then, you can run image encoding by parameters from setting.json file
 
 ```python
 img_encoder = ImageEncoder(**init_settings)
@@ -112,3 +109,11 @@ check all available parameters:
 ```bash
 image_encoder.py -h
 ```
+
+## Colob Example
+
+
+You can click on the link below to experience GeoSAM-Image-Encoder in `Colab`: 
+
+<https://colab.research.google.com/github/coolzhao/Geo-SAM/blob/dev/GeoSAM-Image-Encoder/examples/geosam-image-encoder.ipynb>
+
