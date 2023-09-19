@@ -1,5 +1,8 @@
 # GeoSAM-Image-Encoder
 
+[![](https://img.shields.io/pypi/v/GeoSAM-Image-Encoder)](https://pypi.org/project/GeoSAM-Image-Encoder/) [![Downloads](https://static.pepy.tech/badge/GeoSAM-Image-Encoder)](https://pepy.tech/project/GeoSAM-Image-Encoder)
+
+
 This package is part of [Geo-SAM](https://github.com/coolzhao/Geo-SAM) and is used to encode image data into features recognized by Geo-SAM.
 
 ## Installation
