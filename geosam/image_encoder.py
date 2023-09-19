@@ -283,7 +283,7 @@ class ImageEncoder:
             f'\n input bands: {sam_ds.bands}, '
             f'\n resolution: {sam_ds.res}, '
             f'\n bounds: {sam_ds.index.bounds}, '
-            f'\n num: {len(sam_ds.index)}'
+            f'\n image number: {len(sam_ds.index)}'
             '\n----------------------------------------------\n'
         )
 
@@ -358,7 +358,9 @@ class ImageEncoder:
                 patch_idx,
                 self.model_type
             )
-
+        
+        torch.cuda.empty_cache()
+        
         print(f'"Output feature path": {feature_dir}')
 
     def initialize_sam(self) -> Sam:
