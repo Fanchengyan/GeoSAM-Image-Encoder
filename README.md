@@ -1,13 +1,13 @@
 # GeoSAM-Image-Encoder
 
-[![](https://img.shields.io/pypi/v/GeoSAM-Image-Encoder)](https://pypi.org/project/GeoSAM-Image-Encoder/) [![Downloads](https://static.pepy.tech/badge/GeoSAM-Image-Encoder)](https://pepy.tech/project/GeoSAM-Image-Encoder)
+[![PyPI Version](https://img.shields.io/pypi/v/GeoSAM-Image-Encoder)](https://pypi.org/project/GeoSAM-Image-Encoder/) [![Downloads](https://static.pepy.tech/badge/GeoSAM-Image-Encoder)](https://pepy.tech/project/GeoSAM-Image-Encoder) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/coolzhao/Geo-SAM/blob/main/GeoSAM-Image-Encoder/examples/geosam-image-encoder.ipynb)
 
 
-This package is part of [Geo-SAM](https://github.com/coolzhao/Geo-SAM) and is used to encode image data into features recognized by Geo-SAM.
+This package is part of the [Geo-SAM](https://github.com/coolzhao/Geo-SAM) project and is a standalone Python package that does not depend on QGIS. This package allows you to **encode remote sensing images into features that can be recognized by Geo-SAM using a remote server**, such as ``Colab``, ``AWS``, ``Azure`` or your own ``HPC``.
 
 ## Installation
 
-Installing `GeoSAM-Image-Encoder` directly will install the CPU version of `PyTorch`. Therefore, it is recommended to install the appropriate version of `PyTorch` before installing `GeoSAM-Image-Encoder` in your machine. You can install the corresponding version based on the official PyTorch website:
+Installing `GeoSAM-Image-Encoder` may directly install the CPU version of `PyTorch`. Therefore, it is recommended to install the appropriate version of `PyTorch` before installing `GeoSAM-Image-Encoder` in your machine. You can install the corresponding version based on the official PyTorch website:
 <https://pytorch.org/get-started/locally/>
 
 After installing PyTorch, you can install `GeoSAM-Image-Encoder` via pip.
@@ -21,7 +21,7 @@ pip install git+https://github.com/Fanchengyan/GeoSAM-Image-Encoder.git
 
 ## Usage
 
-You can call this script in Python or Terminal. We recommend using Python interface directly for processing, which will have greater flexibility.
+There are **two ways** to use GeoSAM-Image-Encoder. You can call it in Python or Terminal. We recommend using Python interface directly which will have greater flexibility.
 
 ### Using Python
 
@@ -32,12 +32,6 @@ import geosam
 from geosam import ImageEncoder
 ```
 
-check the folder contains geosam and add it to environment if you want to run in terminal
-
-```python
-geosam.folder
-```
-
 check if gpu available
 
 ```python
@@ -45,6 +39,8 @@ geosam.gpu_available()
 ```
 
 #### Run by specify parameters directly
+
+If you want to specify the parameters directly, you can run it like this:
 
 ```python
 checkpoint_path = '/content/sam_vit_l_0b3195.pth'
@@ -59,7 +55,7 @@ img_encoder.encode_image(image_path,feature_dir)
 
 #### Run by parameters from setting.json file
 
-If you want to using settings.json file to provide the parameters
+If you want to using `settings.json` file which exported from Geo-SAM plugin to provide parameters, you can run it like this:
 
 ```python
 setting_file = "/content/setting.json"
@@ -79,7 +75,7 @@ print(f"init_settings: {init_settings}")
 print(f"encode_settings: {encode_settings}")
 ```
 
-Then, you can run image encoding by parameters from setting.json file
+Then, you can run image encoding by parameters from `setting.json` file
 
 ```python
 img_encoder = ImageEncoder(**init_settings)
