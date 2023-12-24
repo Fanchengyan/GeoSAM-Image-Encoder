@@ -109,6 +109,52 @@ check all available parameters:
 image_encoder.py -h
 ```
 
+```
+This script is for encoding image to SAM features.
+
+=====
+Usage
+=====
+using settings.json:
+
+    image_encoder.py -s <settings.json> -f <feature_dir>
+ 
+ 
+or directly using parameters:
+ 
+    image_encoder.py -i <image_path> -c <checkpoint_path> -f <feature_dir>
+    
+All Parameters:
+-------------------
+-s, --settings:         Path to the settings json file.
+-i, --image_path:       Path to the input image.
+-c, --checkpoint_path:  Path to the SAM checkpoint.
+-f, --feature_dir:      Path to the output feature directory.
+--model_type: one of ["vit_h", "vit_l", "vit_b"] or [0, 1, 2] or None, optional
+    The type of the SAM model. If None, the model type will be 
+    inferred from the checkpoint path. Default: None. 
+--bands: list of int, optional .
+    The bands to be used for encoding. Should not be more than three bands.
+    If None, the first three bands (if available) will be used. Default: None.
+--stride: int, optional
+    The stride of the sliding window. Default: 512.
+--extent: str, optional
+    The extent of the image to be encoded. Should be in the format of
+    "minx, miny, maxx, maxy, [crs]". If None, the extent of the input
+    image will be used. Default: None.
+--value_range: tuple of float, optional
+    The value range of the input image. If None, the value range will be
+    automatically calculated from the input image. Default: None.
+--resolution: float, optional
+    The resolution of the output feature in the unit of raster crs.
+    If None, the resolution of the input image will be used. Default: None.
+--batch_size: int, optional
+    The batch size for encoding. Default: 1.
+--gpu_id: int, optional
+    The device id of the GPU to be used. Default: 0.
+
+```
+
 ## Colob Example
 
 
