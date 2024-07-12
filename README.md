@@ -7,15 +7,22 @@ This package is part of the [Geo-SAM](https://github.com/coolzhao/Geo-SAM) proje
 
 ## Installation
 
-Installing `GeoSAM-Image-Encoder` may directly install the CPU version of `PyTorch`. Therefore, it is recommended to install the appropriate version of `PyTorch` before installing `GeoSAM-Image-Encoder` in your machine. You can install the corresponding version based on the official PyTorch website:
-<https://pytorch.org/get-started/locally/>
-
-After installing PyTorch, you can install `GeoSAM-Image-Encoder` via pip.
+You can install `GeoSAM-Image-Encoder` via pip.
 
 ``` BASH
 pip install GeoSAM-Image-Encoder
 # or
 pip install git+https://github.com/Fanchengyan/GeoSAM-Image-Encoder.git
+```
+
+### GPU Version
+
+`GeoSAM-Image-Encoder` supports using GPU to accelerate the encoding process. If your PC has NVIDIA GPUs, you need to download and install the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) first.
+
+Then install the gpu-version pytorch using the following command (here CUDA 11.7 as an example):
+
+``` BASH
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
 ```
 
 
